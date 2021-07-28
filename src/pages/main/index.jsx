@@ -1,9 +1,21 @@
-import {View,Text} from '@tarojs/components'
+import { View } from '@tarojs/components'
+// import { useDidShow } from '@tarojs/taro'
+// import { useEffect } from 'react'
+import { connect } from 'react-redux'
+import NavigationBar from '../../component/NavigationBar/index'
 
-function main(){
+function main(props) {
     return (
-        <View>Hello</View>
+        <View>
+            {NavigationBar(props)}
+            <View>Hello，hi</View>
+            <View>Hello，hi</View>
+            <View>Hello，hi</View>
+        </View>
     )
 }
 
-export default main
+export default connect(
+    ({ menuButtonHeight, navigationBarHeight, statusBarHeight }) => ({ menuButtonHeight, navigationBarHeight, statusBarHeight }),
+)(main)
+// export default main
