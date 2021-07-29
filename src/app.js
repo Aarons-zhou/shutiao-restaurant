@@ -17,9 +17,6 @@ class App extends Component {
   async onLaunch() {
     const { statusBarHeight, platform } = await wx.getSystemInfo()
     const { top, height } = wx.getMenuButtonBoundingClientRect()
-    // 状态栏高度:statusBarHeight
-    // 胶囊按钮高度
-    const menuButtonHeight = height ? height : 32
     // 导航栏高度
     let navigationBarHeight
     if (top && top !== 0 && height && height !== 0) {
@@ -27,15 +24,10 @@ class App extends Component {
     } else {
         navigationBarHeight = platform === 'android' ? 48 : 40
     }
-    const action = setHeaderBar({
-      statusBarHeight,
-      menuButtonHeight,
-      navigationBarHeight
-    })
-    store.dispatch(action)
+    const upperBarHeight = navigationBarHeight + statusBarHeight + 'rpx'
+    store.dispatch(setHeaderBar({ upperBarHeight }))
   }
 
-  // this.props.children 是将要会渲染的页面
   render() {
     return ( 
       <Provider store = { store } > 
