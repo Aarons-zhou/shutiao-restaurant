@@ -9,7 +9,6 @@
   }
 
   .header {
-    position: fixed;
     width: 100%;
     background-image: url('../../Image/navigation-bar-bgc.jpg');
     height: 600rpx;
@@ -18,19 +17,36 @@
     image {
       width: 273rpx;
       height: 135rpx;
-      transform: translateY(150rpx);
+      transform: translateY(100rpx);
     }
   }
 
   .introduction {
     position: absolute;
     left: 15rpx;
-    top:320rpx;
-    height: 280rpx;
+    top: 350rpx;
+    height: 250rpx;
     width: 720rpx;
     margin: 0 auto;
     background-color: red;
     border-top-left-radius: 3%;
     border-top-right-radius: 3%;
+  }
+
+
+  .navigation-bar {
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    background-color: #f9c;
+    height: 75rpx;
+
+    image {
+      top: 0;
+      // left: 100rpx;
+      width: 137rpx;
+      height: 68rpx;
+      transform: translateY(100rpx);
+    }
   }
 }

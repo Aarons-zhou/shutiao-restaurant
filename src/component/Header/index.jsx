@@ -5,29 +5,29 @@ import { View } from '@tarojs/components'
 import navigationTitle from '../../Image/navigation-title.png'
 import './index.less'
 
-class Header extends Component {
-    //监听页面滑动
-    onPageScroll (e) { 
-        console.log(e)
-    }
-    
+function Header(props) {
+    const { scrollTop, upperBarHeight } = props
+    const hiddenBar = (
+        <View className='navigation-bar' style={{ top: upperBarHeight }}>
+            <image src={navigationTitle} alt='navigation-title' />
+        </View>
+    )
 
-    render() {
-        const upperBarHeight = this.props.upperBarHeight + 'rpx'
-
-        return (
-            <View className='navigation-wrapper'>
-                <view class="wrapIndex" bindtouchstart="touchStart" bindtouchend="touchEnd"></view>
-                <View className='safe-area' style={{ height: upperBarHeight }}></View>
-                <View className='header'>
-                    <image src={navigationTitle} alt='navigation-title'></image>
-                </View>
-                <View className='introduction'>薯条餐厅</View>
+    return (
+        <View className='navigation-wrapper'>
+            {/* <view class="wrapIndex" bindtouchstart="touchStart" bindtouchend="touchEnd"></view> */}
+            <View className='safe-area' style={{ height: upperBarHeight }} />
+            {scrollTop > 88 ? hiddenBar : null}
+            <View className='header'>
+                <image src={navigationTitle} alt='navigation-title' />
             </View>
-        )
-    }
+            <View className='introduction'>薯条餐厅</View>
+        </View>
+    )
 }
 
-export default connect(
-    ({ upperBarHeight }) => ({ upperBarHeight }),
-)(Header)
+// export default connect(
+//     ({ upperBarHeight }) => ({ upperBarHeight }),
+// )(Header)
+
+export default Header
