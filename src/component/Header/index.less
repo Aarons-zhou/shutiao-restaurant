@@ -1,10 +1,23 @@
 .navigation-wrapper {
+  // padding-bottom: 20rpx;
+  margin-bottom: 20rpx;
+
+  // border-bottom: 1rpx rgb(180, 180, 180) solid;
   .safe-area {
     position: fixed;
-    width: 100%;
     z-index: 99;
+    width: 100%;
     top: 0;
     left: 0;
+    background-color: #f9c;
+  }
+
+  .title-area {
+    position: fixed;
+    z-index: 99;
+    height: 75rpx;
+    width: 100%;
+    top: 0;
     background-color: #f9c;
   }
 
@@ -17,7 +30,7 @@
     image {
       width: 273rpx;
       height: 135rpx;
-      transform: translateY(100rpx);
+      transform: translateY(180rpx);
     }
   }
 
@@ -33,20 +46,4 @@
     border-top-right-radius: 3%;
   }
 
-
-  .navigation-bar {
-    position: fixed;
-    z-index: 999;
-    width: 100%;
-    background-color: #f9c;
-    height: 75rpx;
-
-    image {
-      top: 0;
-      // left: 100rpx;
-      width: 137rpx;
-      height: 68rpx;
-      transform: translateY(100rpx);
-    }
-  }
 }

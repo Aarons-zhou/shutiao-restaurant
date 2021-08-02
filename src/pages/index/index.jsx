@@ -1,20 +1,33 @@
+// import { useDidShow } from '@tarojs/taro'
+// import { useEffect } from 'react'
+import { PureComponent } from 'react'
+import { connect } from 'react-redux'
 import { View } from '@tarojs/components'
+import Header from '../../component/Header/index'
+import SwiperComponent from '../../component/Swiper/index'
+import Products from '../../component/Products/index'
+import logo from '../../Image/navigation-title.png'
 import './index.less'
 
-function index() {
-  return (
-    <View className='index'>
-      <View className='text'>薯条餐厅</View>
-      <View className='bottom'>
-        <View className='text-associate'>请选择你的就餐人数</View>
-        <View className='number'>
-          <View className='person-number'>1人</View>
-          <View className='person-number'>2人</View>
-          <View className='person-number'>3人</View>
-          <View className='person-number'>4人</View>
-        </View>
-      </View>
-    </View>
-  )
+class index extends PureComponent {
+    componentDidMount() { }
+
+    render() {
+        return (
+            <View className='index'>
+                {Header(this.props.upperBarHeight)}
+                <image className='sticky-logo' src={logo} alt='logo' />
+                <View className='main'>
+                    {SwiperComponent()}
+                    {Products()}
+                </View>
+            </View>
+        )
+    }
 }
-export default index
+
+export default connect(
+    ({ upperBarHeight }) => ({ upperBarHeight }),
+)(index)
+
+// export default main

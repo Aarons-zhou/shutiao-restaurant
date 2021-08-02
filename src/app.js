@@ -2,6 +2,7 @@ import { Component } from 'react'
 import { Provider } from 'react-redux'
 import store from './redux/store'
 import { setHeaderBar } from './redux/action'
+// import 'taro-ui/dist/style/index.scss'
 import './app.less'
 
 class App extends Component {
