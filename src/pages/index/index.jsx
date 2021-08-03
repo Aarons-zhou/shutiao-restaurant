@@ -1,33 +1,28 @@
 // import { useDidShow } from '@tarojs/taro'
 // import { useEffect } from 'react'
-import { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { View } from '@tarojs/components'
 import Header from '../../component/Header/index'
 import SwiperComponent from '../../component/Swiper/index'
 import Products from '../../component/Products/index'
-import logo from '../../Image/navigation-title.png'
+import { logo } from '../../constances/imgAddress'
 import './index.less'
 
-class index extends PureComponent {
-    componentDidMount() { }
-
-    render() {
-        return (
-            <View className='index'>
-                {Header(this.props.upperBarHeight)}
-                <image className='sticky-logo' src={logo} alt='logo' />
-                <View className='main'>
-                    {SwiperComponent()}
-                    {Products()}
-                </View>
+function index(props) {
+    return (
+        <View className='index'>
+            {Header(props.upperBarHeight)}
+            <image className='sticky-logo' src={logo} alt='logo' />
+            <View className='main'>
+                {SwiperComponent()}
+                {Products(props.upperBarHeight)}
             </View>
-        )
-    }
+        </View>
+    )
 }
 
 export default connect(
-    ({ upperBarHeight }) => ({ upperBarHeight }),
+    ({ upperBarHeight }) => ({ upperBarHeight })
 )(index)
 
 // export default main

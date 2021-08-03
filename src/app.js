@@ -25,7 +25,7 @@ class App extends Component {
     } else {
         navigationBarHeight = platform === 'android' ? 48 : 40
     }
-    const upperBarHeight = navigationBarHeight + statusBarHeight + 'rpx'
+    const upperBarHeight = navigationBarHeight + statusBarHeight
     store.dispatch(setHeaderBar({ upperBarHeight }))
   }
 
