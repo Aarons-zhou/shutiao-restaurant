@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import { View, Text } from '@tarojs/components'
 import { usePageScroll, pageScrollTo } from '@tarojs/taro'
-import { AtTabs } from 'taro-ui'
-import productData from '../../simulatedData/data.js'
+import { AtTabs, AtIcon, AtButton, AtTag } from 'taro-ui'
+import productData from '../../constances/productData.js'
 import 'taro-ui/dist/style/components/tabs.scss'
+import 'taro-ui/dist/style/components/icon.scss'
+import 'taro-ui/dist/style/components/tag.scss'
+import 'taro-ui/dist/style/components/button.scss'
+import 'taro-ui/dist/style/components/loading.scss'
 import './index.less'
 
 function Products(upperBarHeight) {
@@ -32,17 +36,10 @@ function Products(upperBarHeight) {
         })
     }
 
-
-    //标签的点击回调
-    // const scrollTo = index => {
-    //     return () => {
-    //         console.log(index);
-    //     }
-    // }
-
-    usePageScroll(res => {
-        console.log(res.scrollTop)
-    })
+    //监听屏幕滚动实现标签的自动切换
+    // usePageScroll(res => {
+    //     console.log(res.scrollTop)
+    // })
 
     return (
         <View className='products'>
@@ -55,25 +52,48 @@ function Products(upperBarHeight) {
                 />
             </View>
             <View className='product-wrapper'>
-                {Product(productData[0])}
-                {Product(productData[0])}
-                {Product(productData[0])}
-                {Product(productData[0])}
-                {Product(productData[0])}
-                {Product(productData[0])}
+                {productData.map(product => Product(product))}
             </View>
         </View>
     )
 }
 
 function Product(data) {
+    const hiddenTag = !data.name.charAt(6)
+    const [count, setCount] = useState(0)
+
+    const addProduct = () => {
+        setCount(count + 1)
+        console.log(count);
+    }
+
     return (
         <View className='product' key={data.key}>
-            <image src='http://tiebapic.baidu.com/forum/w%3D580/sign=4baefbbaefdcd100cd9cf829428a47be/3fab7eff9925bc312c09502f49df8db1ca137094.jpg' alt={data.name} />
-            <Text>{data.name}</Text>
-            <Text>{data.price}</Text>
+            <image src={data.img} alt={data.name} />
+            <Text className='product-name'>{data.name}</Text>
+            <Text className='product-price'>{`￥${data.price}`}</Text>
+            {!hiddenTag ? null : (
+                <AtTag className='hidden-tag' size='small' circle>该地区销量前5</AtTag>
+            )}
+            <View className='product-tags'>
+                {data.tags.map(tag => (
+                    <AtTag className='product-tag' size='small' circle>{tag}</AtTag>
+                ))}
+            </View>
+            <View className='product-number-wrapper'>
+                <View className='icon-add-wrapper' onClick={addProduct}>
+                    <AtIcon className='icon-add' value='add' size='14' color='white' />
+                </View>
+                {count === 0 ? null : (
+                    <>
+                        <View className='product-number'>{count}</View>
+                        <View className='icon-subtract-wrapper' onClick={addProduct}>
+                            <AtIcon className='icon-subtract' value='subtract' size='14' color='white' />
+                        </View>
+                    </>
+                )}
+            </View>
         </View>
-
     )
 }
 
