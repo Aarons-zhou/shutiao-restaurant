@@ -5,24 +5,25 @@ import { View } from '@tarojs/components'
 import Header from '../../component/Header/index'
 import SwiperComponent from '../../component/Swiper/index'
 import Products from '../../component/Products/index'
+import { updateShoppingCar } from '../../redux/action'
 import { logo } from '../../constances/imgAddress'
 import './index.less'
 
 function index(props) {
+    const { navigationBarInfo:{upperBarHeight}, shoppingCarProduct, updateShoppingCar } = props
     return (
         <View className='index'>
-            {Header(props.upperBarHeight)}
+            {Header(upperBarHeight)}
             <image className='sticky-logo' src={logo} alt='logo' />
             <View className='main'>
                 {SwiperComponent()}
-                {Products(props.upperBarHeight)}
+                {Products(upperBarHeight, updateShoppingCar)}
             </View>
         </View>
     )
 }
 
 export default connect(
-    ({ upperBarHeight }) => ({ upperBarHeight })
+    ({ navigationBarInfo, shoppingCarProduct }) => ({ navigationBarInfo, shoppingCarProduct }),
+    { updateShoppingCar }
 )(index)
-
-// export default main

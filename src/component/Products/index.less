@@ -3,19 +3,6 @@
   z-index: 999;
 }
 
-// .product1{
-//     height: 800rpx;
-//     background-color: blue;
-// }
-// .product2{
-//     height: 800rpx;
-//     background-color: red;
-// }
-// .product3{
-//     height: 800rpx;
-//     background-color: green;
-// }
-
 .product {
   position: relative;
   height: 250rpx;
@@ -65,7 +52,7 @@
     color: honeydew;
   }
 
-  .product-number-wrapper{
+  .product-number-wrapper {
     position: absolute;
     display: flex;
     justify-content: space-evenly;
@@ -75,26 +62,43 @@
     bottom: 20rpx;
     right: 20rpx;
 
-    .icon-add-wrapper, .icon-subtract-wrapper{
+    .icon-add-wrapper,
+    .icon-subtract-wrapper {
       position: absolute;
       width: 40rpx;
       height: 40rpx;
       border-radius: 20%;
+    }
+
+    .icon-add-wrapper {
+      right: 0;
       background-color: #f9c;
+
+      &:active {
+        background-color: rgb(228, 134, 181);
+      }
     }
-    .icon-add-wrapper{
-      right:0
-    }
-    .icon-subtract-wrapper{
+
+    .icon-subtract-wrapper {
       left: 0;
+      border: 1rpx #f9c solid;
+      box-sizing: border-box;
+
+      &:active {
+        border: 1rpx rgb(228, 134, 181) solid;
+      }
     }
-    .icon-add{
-      padding-left: 8rpx;
-      padding-bottom: 13rpx;
+
+    .icon-add {
+      position: absolute;
+      top: 7rpx;
+      left: 7rpx;
     }
-    .icon-subtract{
-      padding-left: 5rpx;
-      padding-bottom: 13rpx;
+
+    .icon-subtract {
+      position: absolute;
+      top: 5rpx;
+      left: 5rpx;
     }
   }
 }
