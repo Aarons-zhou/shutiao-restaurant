@@ -72,7 +72,7 @@ const products = [{
   },
   {
     key: 11,
-    name: '冷肉拼盘',
+    name: '堆高高',
     price: 0.11,
     tags: ['1人份', '蘑菇', '面粉', '松茸', 'test', 'test'],
     detail: '由甜甜花和禽肉酿制而成'
@@ -100,8 +100,36 @@ const products = [{
   },
   {
     key: 15,
-    name: '嘟嘟莲',
+    name: '嘟嘟莲海鲜羹',
     price: 0.15,
+    tags: ['1人份', '蘑菇', '面粉', '松茸', 'test', 'test'],
+    detail: '由甜甜花和禽肉酿制而成'
+  },
+  {
+    key: 16,
+    name: '扣三丝',
+    price: 0.16,
+    tags: ['1人份', '蘑菇', '面粉', '松茸', 'test', 'test'],
+    detail: '由甜甜花和禽肉酿制而成'
+  },
+  {
+    key: 17,
+    name: '绯樱天妇罗',
+    price: 0.17,
+    tags: ['1人份', '蘑菇', '面粉', '松茸', 'test', 'test'],
+    detail: '由甜甜花和禽肉酿制而成'
+  },
+  {
+    key: 18,
+    name: '莲花酥',
+    price: 0.18,
+    tags: ['1人份', '蘑菇', '面粉', '松茸', 'test', 'test'],
+    detail: '由甜甜花和禽肉酿制而成'
+  },
+  {
+    key: 19,
+    name: '黄油煎鱼',
+    price: 0.19,
     tags: ['1人份', '蘑菇', '面粉', '松茸', 'test', 'test'],
     detail: '由甜甜花和禽肉酿制而成'
   },

@@ -36,7 +36,6 @@ function Products(upperBarHeight, updateShoppingCar) {
 
     //标签的点击回调
     const tabClick = index => {
-        setCurrent(index)
         pageScrollTo({
             scrollTop: pageTo(index),
             duration: 300
@@ -47,11 +46,11 @@ function Products(upperBarHeight, updateShoppingCar) {
     let screenTop = 0
     usePageScroll(res => {
         const { scrollTop } = res
-        if (screenTop > 920 && scrollTop <= 920) setCurrent(0)
+        if (scrollTop <= 920) setCurrent(0)
         else if ((screenTop > 1172 || screenTop < 921) && (scrollTop >= 921 && scrollTop <= 1172)) setCurrent(1)
         else if ((screenTop > 1550 || screenTop < 1173) && (scrollTop >= 1173 && scrollTop <= 1550)) setCurrent(2)
-        else if ((screenTop > 2054 || screenTop < 1551) && (scrollTop >= 1551 && scrollTop <= 2054) && current !== 4) setCurrent(3)
-        // console.log(res.scrollTop)
+        else if ((screenTop > 2054 || screenTop < 1551) && (scrollTop >= 1551 && scrollTop <= 2054)) setCurrent(3)
+        else if (scrollTop >= 2055) setCurrent(4)
         screenTop = scrollTop
     })
 
