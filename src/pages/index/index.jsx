@@ -2,9 +2,10 @@
 // import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { View } from '@tarojs/components'
-import Header from '../../component/Header/index'
-import SwiperComponent from '../../component/Swiper/index'
-import Products from '../../component/Products/index'
+import Header from '../../component/Header'
+import SwiperComponent from '../../component/Swiper'
+import Products from '../../component/Products'
+import ShoppingCar from '../../component/ShoppingCar'
 import { updateShoppingCar } from '../../redux/action'
 import { logo } from '../../constances/imgAddress'
 import './index.less'
@@ -18,6 +19,7 @@ function index(props) {
             <View className='main'>
                 {SwiperComponent()}
                 {Products(upperBarHeight, updateShoppingCar)}
+                {ShoppingCar(shoppingCarProduct)}
             </View>
         </View>
     )

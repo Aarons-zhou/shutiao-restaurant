@@ -4,14 +4,4 @@ import { BAR_HEIGHT, UPDATE_SC } from './action-type'
 export const setHeaderBar = data => ({type:BAR_HEIGHT,data})
 
 //设置购物车商品的同步action
-export const updateShoppingCarSync = data => {
-    // console.log(data);
-    return ({type:UPDATE_SC,data})
-}
-
-//设置购物车商品的异步action
-export const updateShoppingCar = data => {
-    return dispatch => {
-        dispatch(updateShoppingCarSync(data))
-    }
-}
+export const updateShoppingCar = data => ({type:UPDATE_SC,data})

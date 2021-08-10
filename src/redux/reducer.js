@@ -19,9 +19,6 @@ function shoppingCarProduct(state=[], action){
       const newState = state.filter(item => item.key!==data.key)
       if(data.number !== 0) newState.push(data)
       return newState
-      // return data.number!==0? [...state,data] : state.filter(product => product.key!==data.key)
-      // if(data.number===0) return state.filter(product => product.key!==data.key)
-      // else return [...state,data]
     default:
       return state
   }

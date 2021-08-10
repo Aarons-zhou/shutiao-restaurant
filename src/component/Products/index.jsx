@@ -3,7 +3,6 @@ import { View, Text } from '@tarojs/components'
 import { usePageScroll, pageScrollTo } from '@tarojs/taro'
 import { AtTabs, AtIcon, AtTag } from 'taro-ui'
 import productData from '../../constances/productData.js'
-import { productImgs } from '../../constances/imgAddress'
 import 'taro-ui/dist/style/components/tabs.scss'
 import 'taro-ui/dist/style/components/icon.scss'
 import 'taro-ui/dist/style/components/tag.scss'
@@ -78,21 +77,27 @@ function Product(data, updateShoppingCar) {
     const addProduct = () => {
         setNumber(number + 1)
         updateShoppingCar({
-            key: data.key,
+            key:data.key,
+            name:data.name,
+            price:data.price,
+            img:data.img,
             number: number + 1
         })
     }
     const subtractProduct = () => {
         setNumber(number - 1)
         updateShoppingCar({
-            key: data.key,
+            key:data.key,
+            name:data.name,
+            price:data.price,
+            img:data.img,
             number: number - 1
         })
     }
 
     return (
         <View className='product' key={data.key}>
-            <image src={productImgs[data.key - 1]} alt={data.name} />
+            <image src={data.img} alt={data.name} />
             <Text className='product-name'>{data.name}</Text>
             <Text className='product-price'>{`￥${data.price}`}</Text>
             {!hiddenTag ? null : (
