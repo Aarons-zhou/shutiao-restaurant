@@ -101,7 +101,7 @@ function Product(data, updateShoppingCar) {
             <Text className='product-name'>{data.name}</Text>
             <Text className='product-price'>{`￥${data.price}`}</Text>
             {!hiddenTag ? null : (
-                <AtTag className='hidden-tag' size='small' circle>该地区销量前5</AtTag>
+                <AtTag className='hidden-tag' size='small' circle>热销中</AtTag>
             )}
             <View className='product-tags'>
                 {data.tags.map(tag => (

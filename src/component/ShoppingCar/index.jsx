@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import { View, ScrollView } from '@tarojs/components'
-import { AtActionSheet, AtActionSheetItem, AtBadge, AtIcon, AtButton } from "taro-ui"
+import { AtActionSheet, AtActionSheetItem, AtBadge, AtIcon, AtButton, AtToast } from "taro-ui"
 import 'taro-ui/dist/style/components/action-sheet.scss'
 import 'taro-ui/dist/style/components/badge.scss'
+import 'taro-ui/dist/style/components/toast.scss'
+import 'taro-ui/dist/style/components/icon.scss'
 import './index.less'
 
 //购物车按钮
@@ -50,11 +52,21 @@ function ShoppingCar(shoppingCarProduct) {
 //商品列表
 function ShoppingCarList(shoppingCarProduct, open, setOpen) {
 
+    const [totalPrice, setTotalPrice] = useState(0)
+    const [toast, setToast] = useState(false)
+
+    //关闭购物车列表的回调
     const close = () => {
         setOpen(false)
     }
 
-    const [totalPrice, setTotalPrice] = useState(0)
+    //支付回调
+    const goPay = () => {
+        setToast(true)
+        setTimeout(() => {
+            setToast(false)
+        }, 2500)
+    }
 
     useEffect(() => {
         let price = 0
@@ -85,8 +97,13 @@ function ShoppingCarList(shoppingCarProduct, open, setOpen) {
                     type='primary'
                     size='small'
                     circle={true}
+                    onClick={goPay}
                 >去支付</AtButton>
             </View>
+            <AtToast
+                isOpened={toast}
+                text="你不会真以为能付款吧"
+                icon="help" />
         </AtActionSheet>
     )
 }
