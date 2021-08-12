@@ -10,7 +10,19 @@ function Header(upperBarHeight) {
             <View className='header'>
                 <image src={logo} alt='navigation-img' />
             </View>
-            <View className='introduction'>薯条餐厅</View>
+            {Introduction()}
+        </View>
+    )
+}
+
+function Introduction(){
+    return (
+        <View className='introduction'>
+            <View className='title'></View>
+            <View className='comment'></View>
+            <View className='discount'></View>
+            <View className='note'></View>
+            <View className='logo'></View>
         </View>
     )
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { View, ScrollView } from '@tarojs/components'
 import { AtActionSheet, AtActionSheetItem, AtBadge, AtIcon, AtButton, AtToast } from "taro-ui"
 import 'taro-ui/dist/style/components/action-sheet.scss'
@@ -12,21 +12,25 @@ function ShoppingCar(shoppingCarProduct) {
     const [open, setOpen] = useState(false)
     const [number, setNumber] = useState(0)
 
-    const showList = () => {
-        //冒泡排序：对shoppingCarProduct顺序进行整理
-        for (let i = 0; i < shoppingCarProduct.length - 1; i++) {
-            for (let j = 0; j < shoppingCarProduct.length - 1 - i; j++) {
-                if (shoppingCarProduct[j].key > shoppingCarProduct[j + 1].key) {
-                    const temp = shoppingCarProduct[j]
-                    shoppingCarProduct[j] = shoppingCarProduct[j + 1]
-                    shoppingCarProduct[j + 1] = temp
+    //冒泡排序：对shoppingCarProduct顺序进行整理
+    const bubbleSort = useCallback(productList => {
+        for (let i = 0; i < productList.length - 1; i++) {
+            for (let j = 0; j < productList.length - 1 - i; j++) {
+                if (productList[j].key > productList[j + 1].key) {
+                    const temp = productList[j]
+                    productList[j] = productList[j + 1]
+                    productList[j + 1] = temp
                 }
             }
         }
+    }, [])
 
+    const showList = () => {
+        bubbleSort(shoppingCarProduct)
         setOpen(true)
     }
 
+    //监听商品列表，更改购物车显示数量
     useEffect(() => {
         let number = 0
         !shoppingCarProduct.length ? null : (
@@ -49,7 +53,7 @@ function ShoppingCar(shoppingCarProduct) {
     )
 }
 
-//商品列表
+//购物车商品列表
 function ShoppingCarList(shoppingCarProduct, open, setOpen) {
 
     const [totalPrice, setTotalPrice] = useState(0)
@@ -68,6 +72,7 @@ function ShoppingCarList(shoppingCarProduct, open, setOpen) {
         }, 2500)
     }
 
+    //监听商品列表，更改购物车总价
     useEffect(() => {
         let price = 0
         !shoppingCarProduct.length ? null : (
@@ -108,7 +113,7 @@ function ShoppingCarList(shoppingCarProduct, open, setOpen) {
     )
 }
 
-//商品列表单项
+//购物车商品列表单项商品
 function ShoppingCarItem(product) {
     return (
         <AtActionSheetItem className='product-item'>

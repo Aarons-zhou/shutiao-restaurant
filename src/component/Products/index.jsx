@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { View, Text } from '@tarojs/components'
 import { usePageScroll, pageScrollTo } from '@tarojs/taro'
 import { AtTabs, AtIcon, AtTag } from 'taro-ui'
@@ -16,7 +16,7 @@ function Products(upperBarHeight, updateShoppingCar) {
     const tabList = [{ title: '恢复类' }, { title: '体力类' }, { title: '复活类' }, { title: '攻击类' }, { title: '防御类' }]
 
     //滚动的位置计算
-    const pageTo = index => {
+    const pageTo = useCallback(index => {
         switch (index) {
             case 0:
                 return 415
@@ -31,15 +31,15 @@ function Products(upperBarHeight, updateShoppingCar) {
             default:
                 return 415
         }
-    }
+    }, [])
 
     //标签的点击回调
-    const tabClick = index => {
+    const tabClick = useCallback(index => {
         pageScrollTo({
             scrollTop: pageTo(index),
             duration: 300
         })
-    }
+    }, [])
 
     //监听屏幕滚动实现标签的自动切换
     let screenTop = 0
@@ -71,26 +71,28 @@ function Products(upperBarHeight, updateShoppingCar) {
 }
 
 function Product(data, updateShoppingCar) {
-    const hiddenTag = !data.name.charAt(6)
     const [number, setNumber] = useState(0)
+    const hiddenTag = useMemo(()=>{
+        return !data.name.charAt(6)
+    },[])
 
     const addProduct = () => {
         setNumber(number + 1)
         updateShoppingCar({
-            key:data.key,
-            name:data.name,
-            price:data.price,
-            img:data.img,
+            key: data.key,
+            name: data.name,
+            price: data.price,
+            img: data.img,
             number: number + 1
         })
     }
     const subtractProduct = () => {
         setNumber(number - 1)
         updateShoppingCar({
-            key:data.key,
-            name:data.name,
-            price:data.price,
-            img:data.img,
+            key: data.key,
+            name: data.name,
+            price: data.price,
+            img: data.img,
             number: number - 1
         })
     }
