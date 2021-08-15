@@ -36,14 +36,92 @@
 
   .introduction {
     position: absolute;
-    left: 15rpx;
     top: 350rpx;
     height: 250rpx;
-    width: 720rpx;
-    margin: 0 auto;
-    background-color: red;
-    border-top-left-radius: 3%;
-    border-top-right-radius: 3%;
+    width: 690rpx;
+    padding: 0 30rpx;
+    background-color: #fefefe;
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
+
+    .title {
+      font-size: 40rpx;
+      margin: 15rpx 0;
+    }
+
+    .comment {
+      font-size: 20rpx;
+      margin-bottom: 10rpx;
+
+      .comment1 {
+        color: rbg(255, 200, 61);
+        color: #ffc83d;
+        padding-right: 20rpx;
+      }
+
+      .comment2 {
+        color: #888;
+      }
+    }
+
+    .discount {
+      view {
+        background-color: transparent;
+        border: 1px #ff8686 solid;
+        color: #ff8686;
+        font-size: 25rpx;
+        margin-right: 10rpx;
+      }
+    }
+
+    .note-ellipsis {
+      position: relative;
+
+      view {
+        width: 650rpx;
+        margin-top: 15rpx;
+        font-size: 25rpx;
+        color: #888;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      text {
+        position: absolute;
+        top: 2rpx;
+        right: 0;
+      }
+    }
+
+    .note-no-ellipsis {
+      position: relative;
+
+      view {
+        width: 650rpx;
+        margin-top: 15rpx;
+        font-size: 25rpx;
+        color: #888;
+      }
+
+      text {
+        position: absolute;
+        top: 2rpx;
+        right: 0;
+      }
+    }
+
+    .logo {
+      position: absolute;
+      background-image: url(http://tiebapic.baidu.com/forum/w%3D580/sign=1a73b47409178a82ce3c7fa8c602737f/bf3043c551da81cba18ecd754566d016082431f9.jpg);
+      background-size: cover;
+      width: 130rpx;
+      height: 130rpx;
+      top: -30rpx;
+      right: 30rpx;
+      border-radius: 10%;
+      border: 1px #ddd solid;
+    }
   }
 
 }
