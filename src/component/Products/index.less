@@ -6,23 +6,23 @@
 .product {
   position: relative;
   height: 250rpx;
-  background-color: #fefefe;
   border-bottom: 1rpx grey solid;
+  background-color: #fefefe;
 
   image {
     position: absolute;
-    width: 180rpx;
-    height: 210rpx;
     top: 20rpx;
     left: 20rpx;
+    width: 180rpx;
+    height: 210rpx;
     border-radius: 10%;
   }
 
   .product-name {
     position: absolute;
-    width: 216rpx;
     top: 20rpx;
     left: 220rpx;
+    width: 216rpx;
     font-size: 36rpx;
   }
 
@@ -35,9 +35,9 @@
 
   .product-tags {
     position: absolute;
-    width: 350rpx;
     top: 130rpx;
     left: 215rpx;
+    width: 350rpx;
 
     .product-tag {
       margin: 0 8rpx;
@@ -54,13 +54,13 @@
 
   .product-number-wrapper {
     position: absolute;
+    bottom: 20rpx;
+    right: 20rpx;
     display: flex;
     justify-content: space-evenly;
     flex-direction: row-reverse;
     width: 150rpx;
     height: 40rpx;
-    bottom: 20rpx;
-    right: 20rpx;
 
     .icon-add-wrapper,
     .icon-subtract-wrapper {
@@ -89,16 +89,12 @@
       }
     }
 
-    .icon-add {
-      position: absolute;
-      top: 7rpx;
-      left: 7rpx;
-    }
-
+    .icon-add,
     .icon-subtract {
       position: absolute;
       top: 5rpx;
       left: 5rpx;
+      font-size: 30rpx !important;
     }
   }
 }

@@ -37,9 +37,8 @@ function Introduction() {
                 <Text className='comment2'>月售999+</Text>
             </View>
             <View className='discount'>
-                <AtTag size='small'>满50-8</AtTag>
-                <AtTag size='small'>满80-20</AtTag>
-                <AtTag size='small'>满150-50</AtTag>
+                <AtTag size='small'>50减8 | 80减15</AtTag>
+                <AtTag size='small'>新客领9元无门槛红包</AtTag>
             </View>
             {ellipsis?(
             <View className='note-ellipsis'>

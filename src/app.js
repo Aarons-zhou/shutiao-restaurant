@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { Provider } from 'react-redux'
 import store from './redux/store'
-import { setHeaderBar } from './redux/action'
+import { setHeaderBar, getWidth } from './redux/action'
 import './app.less'
 
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
   componentDidCatchError() {}
 
   async onLaunch() {
-    const { statusBarHeight, platform } = await wx.getSystemInfo()
+    const { statusBarHeight, platform, windowWidth } = await wx.getSystemInfo()
     const { top, height } = wx.getMenuButtonBoundingClientRect()
     // 导航栏高度
     let navigationBarHeight
@@ -25,7 +25,8 @@ class App extends Component {
         navigationBarHeight = platform === 'android' ? 48 : 40
     }
     const upperBarHeight = navigationBarHeight + statusBarHeight
-    store.dispatch(setHeaderBar({ upperBarHeight }))
+    store.dispatch(setHeaderBar(upperBarHeight))
+    store.dispatch(getWidth(windowWidth))
   }
 
   render() {

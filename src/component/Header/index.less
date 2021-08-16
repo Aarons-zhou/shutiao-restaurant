@@ -1,30 +1,28 @@
 .navigation-wrapper {
-  // padding-bottom: 20rpx;
   margin-bottom: 20rpx;
 
-  // border-bottom: 1rpx rgb(180, 180, 180) solid;
   .safe-area {
     position: fixed;
     z-index: 99;
-    width: 100%;
     top: 0;
     left: 0;
+    width: 100%;
     background-color: #f9c;
   }
 
   .title-area {
     position: fixed;
     z-index: 99;
-    height: 75rpx;
-    width: 100%;
     top: 0;
+    width: 100%;
+    height: 75rpx;
     background-color: #f9c;
   }
 
   .header {
     width: 100%;
-    background-image: url('http://tiebapic.baidu.com/forum/w%3D580/sign=4238f14dc6c8a786be2a4a065708c9c7/8f4863fbaf51f3ded3a8e8d383eef01f3b2979ca.jpg');
     height: 600rpx;
+    background-image: url('http://tiebapic.baidu.com/forum/w%3D580/sign=4238f14dc6c8a786be2a4a065708c9c7/8f4863fbaf51f3ded3a8e8d383eef01f3b2979ca.jpg');
     text-align: center;
 
     image {
@@ -37,26 +35,25 @@
   .introduction {
     position: absolute;
     top: 350rpx;
-    height: 250rpx;
     width: 690rpx;
+    height: 250rpx;
     padding: 0 30rpx;
-    background-color: #fefefe;
     border-top-left-radius: 15%;
     border-top-right-radius: 15%;
+    background-color: #fefefe;
 
     .title {
-      font-size: 40rpx;
       margin: 15rpx 0;
+      font-size: 40rpx;
     }
 
     .comment {
-      font-size: 20rpx;
       margin-bottom: 10rpx;
+      font-size: 20rpx;
 
       .comment1 {
-        color: rbg(255, 200, 61);
-        color: #ffc83d;
         padding-right: 20rpx;
+        color: #dc0;
       }
 
       .comment2 {
@@ -66,11 +63,22 @@
 
     .discount {
       view {
+        height: 30rpx;
+        line-height: 30rpx;
+        padding: 0;
+        margin-right: 10rpx;
         background-color: transparent;
+        font-size: 20rpx;
+      }
+
+      view:nth-of-type(1) {
         border: 1px #ff8686 solid;
         color: #ff8686;
-        font-size: 25rpx;
-        margin-right: 10rpx;
+      }
+
+      view:nth-of-type(2) {
+        border: 1px #db0 solid;
+        color: #db0;
       }
     }
 
@@ -80,8 +88,8 @@
       view {
         width: 650rpx;
         margin-top: 15rpx;
-        font-size: 25rpx;
         color: #888;
+        font-size: 25rpx;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -100,8 +108,8 @@
       view {
         width: 650rpx;
         margin-top: 15rpx;
-        font-size: 25rpx;
         color: #888;
+        font-size: 25rpx;
       }
 
       text {
@@ -113,15 +121,14 @@
 
     .logo {
       position: absolute;
-      background-image: url(http://tiebapic.baidu.com/forum/w%3D580/sign=1a73b47409178a82ce3c7fa8c602737f/bf3043c551da81cba18ecd754566d016082431f9.jpg);
-      background-size: cover;
-      width: 130rpx;
-      height: 130rpx;
       top: -30rpx;
       right: 30rpx;
-      border-radius: 10%;
+      width: 130rpx;
+      height: 130rpx;
       border: 1px #ddd solid;
+      border-radius: 10%;
+      background-image: url(http://tiebapic.baidu.com/forum/w%3D580/sign=1a73b47409178a82ce3c7fa8c602737f/bf3043c551da81cba18ecd754566d016082431f9.jpg);
+      background-size: cover;
     }
   }
-
 }

@@ -1,13 +1,11 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { View, Text } from '@tarojs/components'
-import { usePageScroll, pageScrollTo } from '@tarojs/taro'
+import { usePageScroll, pageScrollTo, showToast } from '@tarojs/taro'
 import { AtTabs, AtIcon, AtTag } from 'taro-ui'
 import productData from '../../constances/productData.js'
 import 'taro-ui/dist/style/components/tabs.scss'
 import 'taro-ui/dist/style/components/icon.scss'
 import 'taro-ui/dist/style/components/tag.scss'
-import 'taro-ui/dist/style/components/button.scss'
-import 'taro-ui/dist/style/components/loading.scss'
 import './index.less'
 
 function Products(upperBarHeight, updateShoppingCar) {
@@ -72,6 +70,7 @@ function Products(upperBarHeight, updateShoppingCar) {
 
 function Product(data, updateShoppingCar) {
     const [number, setNumber] = useState(0)
+    const [opened, setOpened] = useState(false)
     const hiddenTag = useMemo(() => {
         return !data.name.charAt(6)
     }, [])
@@ -102,12 +101,16 @@ function Product(data, updateShoppingCar) {
     //阻止事件冒泡
     const preventBubble = useCallback((e) => {
         e.stopPropagation()
-    },[])
+    }, [])
 
     //跳转至商品详情页
     const navigateToDetail = useCallback(() => {
-        // console.log(data);
-    },[])
+        showToast({
+            title: '商品详情页尚在开发中...',
+            icon: 'none',
+            duration: 1000
+        })
+    }, [])
 
     return (
         <View className='product' key={data.key} onClick={navigateToDetail}>
@@ -124,13 +127,13 @@ function Product(data, updateShoppingCar) {
             </View>
             <View className='product-number-wrapper' onClick={preventBubble}>
                 <View className='icon-add-wrapper' onClick={addProduct}>
-                    <AtIcon className='icon-add' value='add' size='14' color='white' />
+                    <AtIcon className='icon-add' value='add' color='white' />
                 </View>
                 {number === 0 ? null : (
                     <>
                         <View className='product-number'>{number}</View>
                         <View className='icon-subtract-wrapper' onClick={subtractProduct}>
-                            <AtIcon className='icon-subtract' value='subtract' size='14' color='#f9c' />
+                            <AtIcon className='icon-subtract' value='subtract' color='#f9c' />
                         </View>
                     </>
                 )}

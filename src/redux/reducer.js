@@ -1,10 +1,20 @@
-import { BAR_HEIGHT, UPDATE_SC } from './action-type'
+import { BAR_HEIGHT, GET_WIDTH, UPDATE_SC } from './action-type'
 import { combineReducers } from 'redux'
 
 //设置导航栏（安全区）高度
-function navigationBarInfo(state = {}, action) {
+function upperBarHeight(state = {}, action) {
   switch (action.type) {
     case BAR_HEIGHT:
+      return action.data
+    default:
+      return state
+  }
+}
+
+//获取屏幕宽度
+function windowWidth(state = 375, action) {
+  switch (action.type) {
+    case GET_WIDTH:
       return action.data
     default:
       return state
@@ -24,4 +34,4 @@ function shoppingCarProduct(state=[], action){
   }
 }
 
-export default combineReducers({navigationBarInfo, shoppingCarProduct})
+export default combineReducers({upperBarHeight, windowWidth, shoppingCarProduct})

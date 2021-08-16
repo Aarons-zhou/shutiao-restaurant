@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useState } from 'react'
+import { showToast } from '@tarojs/taro'
 import { View, ScrollView } from '@tarojs/components'
-import { AtActionSheet, AtActionSheetItem, AtBadge, AtIcon, AtButton, AtToast } from "taro-ui"
+import { AtActionSheet, AtActionSheetItem, AtBadge, AtIcon, AtButton } from "taro-ui"
 import 'taro-ui/dist/style/components/action-sheet.scss'
 import 'taro-ui/dist/style/components/badge.scss'
-import 'taro-ui/dist/style/components/toast.scss'
 import 'taro-ui/dist/style/components/icon.scss'
+import 'taro-ui/dist/style/components/button.scss'
+import 'taro-ui/dist/style/components/loading.scss'
 import './index.less'
 
 //购物车按钮
@@ -57,7 +59,6 @@ function ShoppingCar(shoppingCarProduct) {
 function ShoppingCarList(shoppingCarProduct, open, setOpen) {
 
     const [totalPrice, setTotalPrice] = useState(0)
-    const [toast, setToast] = useState(false)
 
     //关闭购物车列表的回调
     const close = () => {
@@ -66,10 +67,11 @@ function ShoppingCarList(shoppingCarProduct, open, setOpen) {
 
     //支付回调
     const goPay = () => {
-        setToast(true)
-        setTimeout(() => {
-            setToast(false)
-        }, 2500)
+        showToast({
+            title: '你不会真以为能付款吧？',
+            icon: 'none',
+            duration: 2500
+        })
     }
 
     //监听商品列表，更改购物车总价
@@ -105,10 +107,6 @@ function ShoppingCarList(shoppingCarProduct, open, setOpen) {
                     onClick={goPay}
                 >去支付</AtButton>
             </View>
-            <AtToast
-                isOpened={toast}
-                text="你不会真以为能付款吧"
-                icon="help" />
         </AtActionSheet>
     )
 }

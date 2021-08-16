@@ -1,5 +1,3 @@
-// import { useDidShow } from '@tarojs/taro'
-// import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { View } from '@tarojs/components'
 import Header from '../../component/Header'
@@ -11,13 +9,13 @@ import { logo } from '../../constances/imgAddress'
 import './index.less'
 
 function index(props) {
-    const { navigationBarInfo:{upperBarHeight}, shoppingCarProduct, updateShoppingCar } = props
+    const { upperBarHeight, windowWidth, shoppingCarProduct, updateShoppingCar } = props
     return (
         <View className='index'>
             {Header(upperBarHeight)}
             <image className='sticky-logo' src={logo} alt='logo' />
             <View className='main'>
-                {SwiperComponent()}
+                {SwiperComponent(windowWidth)}
                 {Products(upperBarHeight, updateShoppingCar)}
                 {ShoppingCar(shoppingCarProduct)}
             </View>
@@ -26,6 +24,6 @@ function index(props) {
 }
 
 export default connect(
-    ({ navigationBarInfo, shoppingCarProduct }) => ({ navigationBarInfo, shoppingCarProduct }),
+    ({ upperBarHeight, windowWidth, shoppingCarProduct }) => ({ upperBarHeight, windowWidth, shoppingCarProduct }),
     { updateShoppingCar }
 )(index)
