@@ -72,10 +72,11 @@ function Products(upperBarHeight, updateShoppingCar) {
 
 function Product(data, updateShoppingCar) {
     const [number, setNumber] = useState(0)
-    const hiddenTag = useMemo(()=>{
+    const hiddenTag = useMemo(() => {
         return !data.name.charAt(6)
-    },[])
+    }, [])
 
+    //增加商品数量的回调
     const addProduct = () => {
         setNumber(number + 1)
         updateShoppingCar({
@@ -86,6 +87,7 @@ function Product(data, updateShoppingCar) {
             number: number + 1
         })
     }
+    //减少商品数量的回调
     const subtractProduct = () => {
         setNumber(number - 1)
         updateShoppingCar({
@@ -97,8 +99,18 @@ function Product(data, updateShoppingCar) {
         })
     }
 
+    //阻止事件冒泡
+    const preventBubble = useCallback((e) => {
+        e.stopPropagation()
+    },[])
+
+    //跳转至商品详情页
+    const navigateToDetail = useCallback(() => {
+        // console.log(data);
+    },[])
+
     return (
-        <View className='product' key={data.key}>
+        <View className='product' key={data.key} onClick={navigateToDetail}>
             <image src={data.img} alt={data.name} />
             <Text className='product-name'>{data.name}</Text>
             <Text className='product-price'>{`￥${data.price}`}</Text>
@@ -110,7 +122,7 @@ function Product(data, updateShoppingCar) {
                     <AtTag className='product-tag' size='small' circle>{tag}</AtTag>
                 ))}
             </View>
-            <View className='product-number-wrapper'>
+            <View className='product-number-wrapper' onClick={preventBubble}>
                 <View className='icon-add-wrapper' onClick={addProduct}>
                     <AtIcon className='icon-add' value='add' size='14' color='white' />
                 </View>

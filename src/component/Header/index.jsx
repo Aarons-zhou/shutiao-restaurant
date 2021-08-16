@@ -28,7 +28,7 @@ function Introduction() {
         setEllipsis(!ellipsis)
     }
 
-    const note = '公告：欢迎光临本餐厅，很高兴为宁服务~菜品皆虚构，出自米哈游-原神，侵删谢谢~'
+    const note = '公告：欢迎光临本餐厅，很高兴为宁服务~菜品皆虚构，出自米哈游-原神，非商用谢谢~'
     return (
         <View className='introduction'>
             <View className='title'>薯条餐厅</View>
