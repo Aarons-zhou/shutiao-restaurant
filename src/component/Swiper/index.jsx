@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { Swiper, SwiperItem } from '@tarojs/components'
-import { usePageScroll, pageScrollTo, showToast } from '@tarojs/taro'
+import { pageScrollTo, showToast } from '@tarojs/taro'
 import './index.less'
 
 function SwiperComponent(windowWidth) {
@@ -16,16 +16,12 @@ function SwiperComponent(windowWidth) {
                 })
             ) : (
                     pageScrollTo({
-                        scrollTop: scroll,
+                        scrollTop: scroll * windowWidth + 80,
                         duration: 300
                     })
                 )
         }
     }, [])
-
-    usePageScroll((e) => {
-        console.log(e.scrollTop,e.scrollTop/windowWidth);
-    })
 
     return (
         <Swiper
@@ -36,9 +32,9 @@ function SwiperComponent(windowWidth) {
             indicatorDots
             autoplay
         >
-            <SwiperItem className='swiper1' onClick={scrollToProduct(1671)} />
+            <SwiperItem className='swiper1' onClick={scrollToProduct(4.94)} />
             <SwiperItem className='swiper2' onClick={scrollToProduct()} />
-            <SwiperItem className='swiper3' onClick={scrollToProduct(1564)} />
+            <SwiperItem className='swiper3' onClick={scrollToProduct(4.6)} />
         </Swiper>
 
     )

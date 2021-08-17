@@ -8,7 +8,7 @@ import 'taro-ui/dist/style/components/icon.scss'
 import 'taro-ui/dist/style/components/tag.scss'
 import './index.less'
 
-function Products(upperBarHeight, updateShoppingCar) {
+function Products(upperBarHeight, updateShoppingCar, windowWidth) {
     const [current, setCurrent] = useState(0)
 
     const tabList = [{ title: '恢复类' }, { title: '体力类' }, { title: '复活类' }, { title: '攻击类' }, { title: '防御类' }]
@@ -17,24 +17,24 @@ function Products(upperBarHeight, updateShoppingCar) {
     const pageTo = useCallback(index => {
         switch (index) {
             case 0:
-                return 415
+                return 0.92
             case 1:
-                return 921
+                return 2.26
             case 2:
-                return 1173
+                return 2.93
             case 3:
-                return 1551
+                return 3.94
             case 4:
-                return 2055
+                return 5.28
             default:
-                return 415
+                return 0.92
         }
     }, [])
 
     //标签的点击回调
     const tabClick = useCallback(index => {
         pageScrollTo({
-            scrollTop: pageTo(index),
+            scrollTop: pageTo(index) * windowWidth + 80,
             duration: 300
         })
     }, [])
@@ -43,12 +43,13 @@ function Products(upperBarHeight, updateShoppingCar) {
     let screenTop = 0
     usePageScroll(res => {
         const { scrollTop } = res
-        if (scrollTop <= 920) setCurrent(0)
-        else if ((screenTop > 1172 || screenTop < 921) && (scrollTop >= 921 && scrollTop <= 1172)) setCurrent(1)
-        else if ((screenTop > 1550 || screenTop < 1173) && (scrollTop >= 1173 && scrollTop <= 1550)) setCurrent(2)
-        else if ((screenTop > 2054 || screenTop < 1551) && (scrollTop >= 1551 && scrollTop <= 2054)) setCurrent(3)
-        else if (scrollTop >= 2055) setCurrent(4)
-        screenTop = scrollTop
+        const scrollTop_t = (scrollTop - 80) / windowWidth
+        if (scrollTop_t <= 2.25) setCurrent(0)
+        else if ((screenTop >= 2.92 || screenTop <= 2.25) && (scrollTop_t > 2.25 && scrollTop_t < 2.92)) setCurrent(1)
+        else if ((screenTop >= 3.93 || screenTop <= 2.92) && (scrollTop_t > 2.92 && scrollTop_t < 3.93)) setCurrent(2)
+        else if ((screenTop >= 5.27 || screenTop <= 3.93) && (scrollTop_t > 3.93 && scrollTop_t < 5.27)) setCurrent(3)
+        else if (scrollTop_t >= 5.27) setCurrent(4)
+        screenTop = scrollTop_t
     })
 
     return (
@@ -70,7 +71,6 @@ function Products(upperBarHeight, updateShoppingCar) {
 
 function Product(data, updateShoppingCar) {
     const [number, setNumber] = useState(0)
-    const [opened, setOpened] = useState(false)
     const hiddenTag = useMemo(() => {
         return !data.name.charAt(6)
     }, [])

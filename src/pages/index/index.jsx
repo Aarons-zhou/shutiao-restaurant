@@ -16,7 +16,7 @@ function index(props) {
             <image className='sticky-logo' src={logo} alt='logo' />
             <View className='main'>
                 {SwiperComponent(windowWidth)}
-                {Products(upperBarHeight, updateShoppingCar)}
+                {Products(upperBarHeight, updateShoppingCar,windowWidth)}
                 {ShoppingCar(shoppingCarProduct)}
             </View>
         </View>
