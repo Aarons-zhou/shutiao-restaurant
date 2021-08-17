@@ -19,13 +19,13 @@ function Products(upperBarHeight, updateShoppingCar, windowWidth) {
             case 0:
                 return 0.92
             case 1:
-                return 2.26
+                return 2.25
             case 2:
-                return 2.93
+                return 2.92
             case 3:
-                return 3.94
+                return 3.93
             case 4:
-                return 5.28
+                return 5.27
             default:
                 return 0.92
         }
@@ -44,11 +44,11 @@ function Products(upperBarHeight, updateShoppingCar, windowWidth) {
     usePageScroll(res => {
         const { scrollTop } = res
         const scrollTop_t = (scrollTop - 80) / windowWidth
-        if (scrollTop_t <= 2.25) setCurrent(0)
-        else if ((screenTop >= 2.92 || screenTop <= 2.25) && (scrollTop_t > 2.25 && scrollTop_t < 2.92)) setCurrent(1)
-        else if ((screenTop >= 3.93 || screenTop <= 2.92) && (scrollTop_t > 2.92 && scrollTop_t < 3.93)) setCurrent(2)
-        else if ((screenTop >= 5.27 || screenTop <= 3.93) && (scrollTop_t > 3.93 && scrollTop_t < 5.27)) setCurrent(3)
-        else if (scrollTop_t >= 5.27) setCurrent(4)
+        if (scrollTop_t <= 2.24) setCurrent(0)
+        else if ((screenTop >= 2.91 || screenTop <= 2.24) && (scrollTop_t > 2.24 && scrollTop_t < 2.91)) setCurrent(1)
+        else if ((screenTop >= 3.92 || screenTop <= 2.91) && (scrollTop_t > 2.91 && scrollTop_t < 3.92)) setCurrent(2)
+        else if ((screenTop >= 5.26 || screenTop <= 3.92) && (scrollTop_t > 3.92 && scrollTop_t < 5.26)) setCurrent(3)
+        else if (scrollTop_t >= 5.26) setCurrent(4)
         screenTop = scrollTop_t
     })
 
